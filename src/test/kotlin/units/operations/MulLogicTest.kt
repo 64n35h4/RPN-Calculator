@@ -2,13 +2,10 @@ package units.operations
 
 import org.junit.After
 import org.junit.Before
-import kotlin.test.Test
-
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import services.ActionStackService
@@ -16,9 +13,10 @@ import services.ValueStackService
 import services.services
 import utils.IncorrectArgsException
 import utils.InsufficientParamsException
+import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
-class MulLogicTest: KoinTest {
+class MulLogicTest : KoinTest {
     private val mulLogic = MulLogic()
     private val stack by inject<ValueStackService>()
     private val actionStack by inject<ActionStackService>()
@@ -71,7 +69,7 @@ class MulLogicTest: KoinTest {
     fun `prep unhappy`() {
         stack.push(2.4)
         assertFailsWith(InsufficientParamsException::class) {
-            val ret = mulLogic.prep()
+            mulLogic.prep()
         }
     }
 

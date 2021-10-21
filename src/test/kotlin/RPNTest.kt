@@ -2,13 +2,12 @@ import org.junit.After
 import org.junit.Before
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.get
 import org.koin.test.inject
 import services.ParserService
-import services.services
 import services.ValueStackService
+import services.services
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import services.ActionStackService
@@ -77,7 +76,7 @@ class SqrtLogicTest : KoinTest {
     @Test
     fun `prep unhappy`() {
         assertFailsWith(InsufficientParamsException::class) {
-            val ret = sqrtLogic.prep()
+            sqrtLogic.prep()
         }
     }
 

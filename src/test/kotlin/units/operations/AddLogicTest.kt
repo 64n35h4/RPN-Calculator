@@ -69,7 +69,7 @@ class AddLogicTest : KoinTest {
     fun `prep unhappy`() {
         stack.push(2.4)
         assertFailsWith(InsufficientParamsException::class) {
-            val ret = addLogic.prep()
+            addLogic.prep()
         }
     }
 

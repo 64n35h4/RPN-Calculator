@@ -2,8 +2,6 @@ package units.operations
 
 import org.junit.After
 import org.junit.Before
-import kotlin.test.Test
-
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.koin.core.context.startKoin
@@ -15,9 +13,10 @@ import services.ValueStackService
 import services.services
 import utils.IncorrectArgsException
 import utils.InsufficientParamsException
+import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
-class DivLogicTest: KoinTest {
+class DivLogicTest : KoinTest {
     private val divLogic = DivLogic()
     private val stack by inject<ValueStackService>()
     private val actionStack by inject<ActionStackService>()
@@ -70,7 +69,7 @@ class DivLogicTest: KoinTest {
     fun `prep unhappy`() {
         stack.push(2.4)
         assertFailsWith(InsufficientParamsException::class) {
-            val ret = divLogic.prep()
+            divLogic.prep()
         }
     }
 

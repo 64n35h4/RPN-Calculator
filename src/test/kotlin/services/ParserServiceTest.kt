@@ -1,11 +1,10 @@
 package services
 
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.koin.test.KoinTest
 import kotlin.test.Test
 
-class ParserServiceTest: KoinTest {
+class ParserServiceTest : KoinTest {
     private val parserService = ParserService()
 
     @Test

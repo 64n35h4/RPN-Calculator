@@ -1,13 +1,12 @@
 package units
 
-import kotlin.test.Test
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.koin.test.KoinTest
 import utils.CommandNotFound
+import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
-class CommandTest: KoinTest {
+class CommandTest : KoinTest {
     private val commandCls = Command
 
     @Test
@@ -32,7 +31,7 @@ class CommandTest: KoinTest {
     @Test
     fun fromUnHappyCommand() {
         assertFailsWith(CommandNotFound::class) {
-            val cmd = commandCls.fromCommand("foo")
+            commandCls.fromCommand("foo")
         }
     }
 }

@@ -7,6 +7,7 @@ import services.ValueStackService
 import units.Command
 import units.Operator
 import utils.InsufficientParamsException
+import utils.OperationNotFound
 
 class RPN : KoinComponent {
     private val parser by inject<ParserService>()
@@ -28,13 +29,15 @@ class RPN : KoinComponent {
 
     // Handler for all math operations (including cases of InsufficientParams
     private fun handleMathOperation(index: Int, operand: String) {
-        val operation = Operator.fromSymbol(operand)
         try {
+            val operation = Operator.fromSymbol(operand)
             val values = operation.prep()
             operation.execute(*values)
         } catch (ex: InsufficientParamsException) {
             println("Operator $operand (at location: $index): ${ex.message}")
             throw ex
+        } catch (ex: OperationNotFound) {
+            println("Operator $operand (at location: $index): ${ex.message}")
         }
     }
 
@@ -46,8 +49,9 @@ class RPN : KoinComponent {
 
     // Default handler
     private fun handleDefault(currentOperand: String) {
-        actionStack.push(Action(actionType = "PUSH", actionPayload = listOf(currentOperand.toDouble())))
-        stack.push(currentOperand.toDouble())
+        val currentAsDouble = currentOperand.toDoubleOrNull() ?: return
+        actionStack.push(Action(actionType = "PUSH", actionPayload = listOf(currentAsDouble)))
+        stack.push(currentAsDouble)
     }
 
     fun handleIterator(parseItr: Iterator<String>) {

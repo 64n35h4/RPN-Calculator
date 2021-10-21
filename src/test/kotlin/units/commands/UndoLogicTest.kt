@@ -2,20 +2,19 @@ package units.commands
 
 import org.junit.After
 import org.junit.Before
-import kotlin.test.Test
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import services.Action
 import services.ActionStackService
 import services.ValueStackService
+import services.services
 import units.operations.AddLogic
+import kotlin.test.Test
 
-class UndoLogicTest: KoinTest {
+class UndoLogicTest : KoinTest {
     private val undoLogic = UndoLogic()
     private val addLogic = AddLogic()
     private val stack by inject<ValueStackService>()
@@ -25,12 +24,7 @@ class UndoLogicTest: KoinTest {
     fun setUp() {
         startKoin {
             printLogger()
-            modules(
-                module {
-                    single { ValueStackService() }
-                    single { ActionStackService() }
-                }
-            )
+            modules(services)
         }
         actionStack.init()
         stack.init()

@@ -2,7 +2,6 @@ package units
 
 import units.operations.* // ktlint-disable no-wildcard-imports
 import utils.OperationNotFound
-import java.util.Locale
 import kotlin.collections.HashMap
 
 enum class OPERATIONS {

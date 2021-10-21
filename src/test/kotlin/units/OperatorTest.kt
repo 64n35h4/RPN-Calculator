@@ -1,12 +1,12 @@
 package units
 
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.koin.test.KoinTest
 import utils.OperationNotFound
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
-class OperatorTest: KoinTest {
+class OperatorTest : KoinTest {
     private val operatorCls = Operator
 
     @Test
